@@ -18,7 +18,9 @@
 ** ===================================================================
 */
 
+#if !defined(_WIN32)
 #define LUA_USE_POSIX
+#endif
 
 /*
 @@ LUA_ANSI controls the use of non-ansi features.
