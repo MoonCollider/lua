@@ -433,15 +433,11 @@
 @@ The luai_num* macros define the primitive operations over numbers.
 */
 
-/* the following operations need the math library */
-#if defined(lobject_c) || defined(lvm_c)
+/* these are quite standard operations */
+#if defined(LUA_CORE)
 #include <math.h>
 #define luai_nummod(L,a,b)	((a) - l_mathop(floor)((a)/(b))*(b))
 #define luai_numpow(L,a,b)	(l_mathop(pow)(a,b))
-#endif
-
-/* these are quite standard operations */
-#if defined(LUA_CORE)
 #define luai_numadd(L,a,b)	((a)+(b))
 #define luai_numsub(L,a,b)	((a)-(b))
 #define luai_nummul(L,a,b)	((a)*(b))
