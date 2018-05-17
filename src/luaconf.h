@@ -18,7 +18,7 @@
 ** ===================================================================
 */
 
-#if !defined(_WIN32)
+#if !defined(_WIN32) && !defined(__ORBIS__)
 #define LUA_USE_POSIX
 #endif
 
