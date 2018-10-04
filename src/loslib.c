@@ -78,9 +78,12 @@
 
 
 static int os_execute (lua_State *L) {
-#ifdef __ORBIS__
+#if defined(__ORBIS__)
 	assert(false);
-	return luaL_error(L, "PS4 NOT IMPLEMENTED");
+    return luaL_error(L, "PS4 NOT IMPLEMENTED");
+#elif defined(__APPLE__)
+    assert(false);
+    return luaL_error(L, "APPLE NOT IMPLEMENTED");
 #else
   const char *cmd = luaL_optstring(L, 1, NULL);
   int stat = system(cmd);
