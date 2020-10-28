@@ -1101,6 +1101,10 @@ LUA_API int lua_gc (lua_State *L, int what, int data) {
 ** miscellaneous functions
 */
 
+#ifdef _MSC_VER
+#pragma warning(push)
+#pragma warning(disable: 4702) // unreachable code
+#endif
 
 LUA_API int lua_error (lua_State *L) {
   lua_lock(L);
@@ -1109,6 +1113,10 @@ LUA_API int lua_error (lua_State *L) {
   /* code unreachable; will unlock when control actually leaves the kernel */
   return 0;  /* to avoid warnings */
 }
+
+#ifdef _MSC_VER
+#pragma warning(pop)
+#endif
 
 
 LUA_API int lua_next (lua_State *L, int idx) {
