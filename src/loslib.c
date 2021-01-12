@@ -190,6 +190,10 @@ static int getfield (lua_State *L, const char *key, int d) {
   return res;
 }
 
+#ifdef _MSC_VER
+#pragma warning(push)
+#pragma warning(disable: 4702) // unreachable code
+#endif
 
 static const char *checkoption (lua_State *L, const char *conv, char *buff) {
   static const char *const options[] = LUA_STRFTIMEOPTIONS;
@@ -214,6 +218,9 @@ static const char *checkoption (lua_State *L, const char *conv, char *buff) {
   return conv;  /* to avoid warnings */
 }
 
+#ifdef _MSC_VER
+#pragma warning(pop)
+#endif
 
 static int os_date (lua_State *L) {
   const char *s = luaL_optstring(L, 1, "%c");
