@@ -53,12 +53,12 @@
 
 #if !defined(lua_popen)	/* { */
 
-#if defined(LUA_USE_POPEN)	/* { */
+#if defined(LUA_USE_POPEN) && !defined(KYT_LUA_DISABLE_POPEN)	/* { */
 
 #define lua_popen(L,c,m)	((void)L, fflush(NULL), popen(c,m))
 #define lua_pclose(L,file)	((void)L, pclose(file))
 
-#elif defined(LUA_WIN)		/* }{ */
+#elif defined(LUA_WIN) && !defined(KYT_LUA_DISABLE_POPEN)    /* }{ */
 
 #define lua_popen(L,c,m)		((void)L, _popen(c,m))
 #define lua_pclose(L,file)		((void)L, _pclose(file))
