@@ -254,8 +254,9 @@ static int io_popen (lua_State *L) {
 
 
 static int io_tmpfile (lua_State *L) {
-#ifdef __ORBIS__
+#if defined(__ORBIS__) || defined(__PROSPERO__)
 	assert(false);
+    return luaL_error(L, "PLAYSTATION NOT IMPLEMENTED");
 #else
   LStream *p = newfile(L);
   p->f = tmpfile();

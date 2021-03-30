@@ -78,9 +78,9 @@
 
 
 static int os_execute (lua_State *L) {
-#if defined(__ORBIS__)
+#if defined(__ORBIS__) || defined(__PROSPERO__)
 	assert(false);
-    return luaL_error(L, "PS4 NOT IMPLEMENTED");
+    return luaL_error(L, "PLAYSTATION NOT IMPLEMENTED");
 #elif defined(__APPLE__)
     assert(false);
     return luaL_error(L, "APPLE NOT IMPLEMENTED");
@@ -104,9 +104,9 @@ static int os_remove (lua_State *L) {
 
 
 static int os_rename (lua_State *L) {
-#ifdef __ORBIS__
+#if defined(__ORBIS__) || defined(__PROSPERO__)
 	assert(false);
-	return luaL_error(L, "PS4 NOT IMPLEMENTED");
+	return luaL_error(L, "PLAYSTATION NOT IMPLEMENTED");
 #else
   const char *fromname = luaL_checkstring(L, 1);
   const char *toname = luaL_checkstring(L, 2);
@@ -116,9 +116,9 @@ static int os_rename (lua_State *L) {
 
 
 static int os_tmpname (lua_State *L) {
-#ifdef __ORBIS__
+#if defined(__ORBIS__) || defined(__PROSPERO__)
 	assert(false);
-	return luaL_error(L, "PS4 NOT IMPLEMENTED");
+	return luaL_error(L, "PLAYSTATION NOT IMPLEMENTED");
 #else
   char buff[LUA_TMPNAMBUFSIZE];
   int err;
@@ -132,9 +132,9 @@ static int os_tmpname (lua_State *L) {
 
 
 static int os_getenv (lua_State *L) {
-#ifdef __ORBIS__
+#if defined(__ORBIS__) || defined(__PROSPERO__)
 	assert(false);
-	return luaL_error(L, "PS4 NOT IMPLEMENTED");
+	return luaL_error(L, "PLAYSTATION NOT IMPLEMENTED");
 #else
   lua_pushstring(L, getenv(luaL_checkstring(L, 1)));  /* if NULL push nil */
 #endif
